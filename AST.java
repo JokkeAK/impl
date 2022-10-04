@@ -26,12 +26,13 @@ abstract class Trace extends AST{
 
 }
 
-class Assignments extends AST{
+/*
+    class Assignments extends AST{
     List<Assignment> ass;
     Assignments(List<Assignment> ass){this.ass = ass;}
 }
 
-class Assignment {
+ class Assignment extends AST {
     String varName;
     Expr e;
     Assignment(String varName, Expr e){this.varName=varName; this.e=e;}

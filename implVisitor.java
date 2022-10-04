@@ -30,11 +30,18 @@ public interface implVisitor<T> extends ParseTreeVisitor<T> {
 	T visitLatches(implParser.LatchesContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code Assignment}
-	 * labeled alternative in {@link implParser#updateCom}.
+	 * labeled alternative in {@link implParser#command}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitAssignment(implParser.AssignmentContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code Sequence}
+	 * labeled alternative in {@link implParser#commands}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitSequence(implParser.SequenceContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code NOT}
 	 * labeled alternative in {@link implParser#expr}.

@@ -45,36 +45,52 @@ public class main {
 // simply a Double.
 
 //task 4 laves i main
-class Interpreter extends AbstractParseTreeVisitor<Expr> implements implVisitor<Expr> {
-
-	public AST visitStart(implParser.StartContext ctx){
-		return visit(ctx.cs);
-	};
+class Interpreter extends AbstractParseTreeVisitor<AST> implements implVisitor<AST> {
 
 
-/*
 	@Override
-	public Double visitCommand(implParser.CommandContext ctx) {
+	public AST visitStart(implParser.StartContext ctx) {
 		return null;
 	}
 
 	@Override
-	public Double visitBlock(implParser.BlockContext ctx) {
+	public AST visitSimInp(implParser.SimInpContext ctx) {
 		return null;
 	}
 
 	@Override
-	public Double visitCondition(implParser.ConditionContext ctx) {
+	public AST visitLatches(implParser.LatchesContext ctx) {
 		return null;
 	}
 
 	@Override
-	public Double visitExpr(implParser.ExprContext ctx) {
-		return null;
+	public AST visitAssignment(implParser.AssignmentContext ctx) {
+		return new Assignment(visit(ctx).toString(),(Expr)visit(ctx));
 	}
 
-	;
-    //public Double visitExpr(implParser.ExprContext ctx){return null;};
-*/
+	@Override
+	public AST visitNOT(implParser.NOTContext ctx) {
+		return new NOT((Expr)visit(ctx.e1));
+	}
+
+	@Override
+	public AST visitOR(implParser.ORContext ctx) {
+		return new OR((Expr)visit(ctx.e1),(Expr)visit(ctx.e2));
+	}
+
+	@Override
+	public AST visitAND(implParser.ANDContext ctx) {
+		return new AND((Expr)visit(ctx.e1),(Expr)visit(ctx.e2));
+	}
+
+	@Override
+	public AST visitParentheses(implParser.ParenthesesContext ctx) {
+		return visit(ctx.e1);
+	}
+
+	@Override
+	public AST visitStringVar(implParser.StringVarContext ctx) {
+		return null;
+	}
 }
 

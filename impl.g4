@@ -1,14 +1,16 @@
 grammar impl;
 
-start : '.hardware' IDENTIFIER '.inputs' IDENTIFIER '.outputs' IDENTIFIER* latchAct* '.update' updateCom* '.simulate' simInp EOF;
+start : '.hardware' IDENTIFIER '.inputs' IDENTIFIER '.outputs' IDENTIFIER* latchAct* '.update' commands '.simulate' simInp EOF;
 
 IDENTIFIER : [a-zA-Z_]*[a-zA-Z0-9_]*[0-9]*;
 
-simInp : IDENTIFIER '=' IDENTIFIER; //mangler denne i AST
+simInp : IDENTIFIER '=' IDENTIFIER;
 
 latchAct: '.latch' IDENTIFIER ' -> ' IDENTIFIER'M'* # Latches;
 
-updateCom : IDENTIFIER '=' expr* # Assignment;
+command : IDENTIFIER '=' expr # Assignment;
+
+commands : cmds+=command* # Sequence; //Sequence er ny og har ikke fået lavet noget i AST.java
 
 expr : IDENTIFIER               # StringVar
      | '('e1=expr')'            # Parentheses //not needed in abtract syntax
