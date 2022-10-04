@@ -44,10 +44,53 @@ public class main {
 // This is parameterized over a return type "<T>" which is in our case
 // simply a Double.
 
-//task 4 laves i main
 class Interpreter extends AbstractParseTreeVisitor<AST> implements implVisitor<AST> {
+	@Override
+	public AST visitStart(implParser.StartContext ctx) {
+		return null;
+	}
 
+	@Override
+	public AST visitSimInp(implParser.SimInpContext ctx) {
+		return null;
+	}
 
+	@Override
+	public AST visitLatches(implParser.LatchesContext ctx) {
+		return null;
+	}
+
+	@Override
+	public AST visitAssignment(implParser.AssignmentContext ctx) {
+		return null;
+	}
+
+	@Override
+	public AST visitNOT(implParser.NOTContext ctx) {
+		return null;
+	}
+
+	@Override
+	public AST visitOR(implParser.ORContext ctx) {
+		return null;
+	}
+
+	@Override
+	public AST visitAND(implParser.ANDContext ctx) {
+		return null;
+	}
+
+	@Override
+	public AST visitParentheses(implParser.ParenthesesContext ctx) {
+		return null;
+	}
+
+	@Override
+	public AST visitStringVar(implParser.StringVarContext ctx) {
+		return null;
+	}
+
+/*
 	@Override
 	public AST visitStart(implParser.StartContext ctx) {
 		return null;
@@ -66,6 +109,11 @@ class Interpreter extends AbstractParseTreeVisitor<AST> implements implVisitor<A
 	@Override
 	public AST visitAssignment(implParser.AssignmentContext ctx) {
 		return new Assignment(visit(ctx).toString(),(Expr)visit(ctx));
+	}
+
+	@Override
+	public AST visitSequence(implParser.SequenceContext ctx) {
+		return new Sequence((Command)visit(ctx.c),visit(ctx.cs));
 	}
 
 	@Override
@@ -92,5 +140,7 @@ class Interpreter extends AbstractParseTreeVisitor<AST> implements implVisitor<A
 	public AST visitStringVar(implParser.StringVarContext ctx) {
 		return null;
 	}
+
+ */
 }
 
