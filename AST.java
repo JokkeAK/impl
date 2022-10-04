@@ -22,7 +22,7 @@ class Latches extends AST{
     Latches(List<Latch> latches){this.latches = latches;}
 }
 
-class Latch{
+class Latch extends Command{
     String fromS, toS;
     Latch(String fromS, String toS){this.fromS=fromS; this.toS=toS;}
 }

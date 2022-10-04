@@ -24,7 +24,7 @@ MULTILINECOMMENTS :  '/*'  ( '*'~[/] | ~[*]  )* '*/' -> skip;
 /*
 grammar impl;
 
-start : '.hardware' IDENTIFIER '.inputs' IDENTIFIER '.outputs' IDENTIFIER* latchAct* '.update' commands '.simulate' simInp EOF;
+start : cs=commands EOF;
 
 IDENTIFIER : [a-zA-Z_]*[a-zA-Z0-9_]*[0-9]*;
 
