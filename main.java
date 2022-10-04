@@ -3,6 +3,7 @@ import org.antlr.v4.runtime.*;
 import org.antlr.v4.runtime.tree.*;
 import org.antlr.v4.runtime.CharStreams;
 import java.io.IOException;
+import java.util.List;
 
 public class main {
     public static void main(String[] args) throws IOException{
@@ -93,7 +94,7 @@ class Interpreter extends AbstractParseTreeVisitor<AST> implements implVisitor<A
 /*
 	@Override
 	public AST visitStart(implParser.StartContext ctx) {
-		return null;
+		return visit(ctx);
 	}
 
 	@Override
@@ -108,7 +109,7 @@ class Interpreter extends AbstractParseTreeVisitor<AST> implements implVisitor<A
 
 	@Override
 	public AST visitAssignment(implParser.AssignmentContext ctx) {
-		return new Assignment(visit(ctx).toString(),(Expr)visit(ctx));
+		return new Assignment();
 	}
 
 	@Override

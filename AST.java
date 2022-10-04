@@ -27,14 +27,17 @@ class Latch extends Command{
     Latch(String fromS, String toS){this.fromS=fromS; this.toS=toS;}
 }
 
-/*
-    class Assignments extends AST{
-    List<Assignment> ass;
-    Assignments(List<Assignment> ass){this.ass = ass;}
+class Sequence extends AST{
+    List<Assignment> seq;
+    Sequence(List<Assignment> ass){this.seq = ass;}
+
+    public Sequence(Command visit, AST visit1) {}
 }
 
 
- class Assignment extends AST {
+class Command extends AST {}
+
+class Assignment extends Command {
     String varName;
     Expr e;
     Assignment(String varName, Expr e){this.varName=varName; this.e=e;}
@@ -42,7 +45,7 @@ class Latch extends Command{
 }
  */
 
-abstract class Expr extends Assignment{
+abstract class Expr extends AST{
     String varName;
     Expr e;
     Expr(){};
