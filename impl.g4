@@ -1,16 +1,12 @@
 grammar impl;
 
-start : '.hardware' IDENTIFIER '.inputs' IDENTIFIER '.outputs' IDENTIFIER* latchAct* '.update' updateCom* '.simulate' simInp EOF;
-
-IDENTIFIER : [a-zA-Z_]*[a-zA-Z]*;
-
-BINARY: [0-1]*;
+start : '.hardware' IDENTIFIER '.inputs' IDENTIFIER '.outputs' IDENTIFIER* latchAct* '.update' command* '.simulate' simInp EOF;
 
 simInp : IDENTIFIER '=' BINARY;
 
 latchAct: '.latch' IDENTIFIER ' -> ' IDENTIFIER'M'* # Latches;
 
-updateCom : IDENTIFIER '=' expr # Assignment;
+command : IDENTIFIER '=' expr # Assignment;
 
 expr : IDENTIFIER               # StringVar
      | '('e1=expr')'            # Parentheses //not needed in abtract syntax
@@ -18,10 +14,13 @@ expr : IDENTIFIER               # StringVar
      |e1=expr ('&&') e2=expr    # AND
      |e1=expr ('||') e2=expr    # OR;
 
+IDENTIFIER : [a-zA-Z_]*[a-zA-Z]*;
+BINARY: [0-1]*;
 HVIDRUM : [ \t\n]+ -> skip ;
 KOMMENTAR : '//' ~[\n]* -> skip ;
 MULTILINECOMMENTS :  '/*'  ( '*'~[/] | ~[*]  )* '*/' -> skip;
 
+//Hjælpelæreren syntes at nedenstående var godt - ovenstående syntes forelæseren var godt
 /*
 grammar impl;
 

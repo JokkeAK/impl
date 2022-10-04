@@ -8,6 +8,15 @@ import java.util.List;
 
 public abstract class AST{};
 
+abstract class Trace extends AST{
+    String name;
+    List<Boolean> input;
+    List<Boolean> output;
+    Trace(String name, List<Boolean> input, List<Boolean> output){this.name = name; this.input=input; this.output=output;}
+
+}
+
+/* Det her er fra den grammar som hjælpelæreren syntes var godt
 class Latches extends AST{
     List<Latch> latches;
     Latches(List<Latch> latches){this.latches = latches;}
@@ -18,19 +27,12 @@ class Latch{
     Latch(String fromS, String toS){this.fromS=fromS; this.toS=toS;}
 }
 
-abstract class Trace extends AST{
-    String name;
-    List<Boolean> input;
-    List<Boolean> output;
-    Trace(String name, List<Boolean> input, List<Boolean> output){this.name = name; this.input=input; this.output=output;}
-
-}
-
 /*
     class Assignments extends AST{
     List<Assignment> ass;
     Assignments(List<Assignment> ass){this.ass = ass;}
 }
+
 
  class Assignment extends AST {
     String varName;
@@ -38,6 +40,7 @@ abstract class Trace extends AST{
     Assignment(String varName, Expr e){this.varName=varName; this.e=e;}
     Assignment(){}
 }
+ */
 
 abstract class Expr extends Assignment{
     String varName;
