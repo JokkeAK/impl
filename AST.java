@@ -8,28 +8,54 @@ import java.util.List;
 
 public abstract class AST{};
 
-abstract class Latch extends AST{
-    abstract public Integer eval();
+class Latches extends AST{
+    List<Latch> latches;
+    Latches(List<Latch> latches){this.latches = latches;}
 }
 
-abstract class Assignment extends AST{
-    String varname;
+class Latch{
+    String fromS, toS;
+    Latch(String fromS, String toS){this.fromS=fromS; this.toS=toS;}
+}
+
+abstract class Trace extends AST{
+    String name;
+    List<Boolean> input;
+    List<Boolean> output;
+    Trace(String name, List<Boolean> input, List<Boolean> output){this.name = name; this.input=input; this.output=output;}
+
+}
+
+class Assignments extends AST{
+    List<Assignment> ass;
+    Assignments(List<Assignment> ass){this.ass = ass;}
+}
+
+class Assignment {
+    String varName;
     Expr e;
-    Assignment(String varname, Expr e){this.varname=varname; this.e=e;}
+    Assignment(String varName, Expr e){this.varName=varName; this.e=e;}
+    Assignment(){}
 }
 
-abstract class Trace extends AST{}
-
-abstract class Expr extends AST{
-}
-
-class Signal extends Expr {
-    public String value;
-    public Signal(String s) {
-        value = s;
+abstract class Expr extends Assignment{
+    String varName;
+    Expr e;
+    Expr(){};
+    Expr(String varName, Expr e)
+    {
+        this.varName=varName;
+        this.e=e;
     }
+    //abstract public Boolean eval();
+
 }
 
+class StringVar extends Expr {
+    public String value;
+    StringVar(String value){
+        this.value=value;}
+}
 
 class NOT extends Expr{
     Expr e1;

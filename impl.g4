@@ -4,13 +4,13 @@ start : '.hardware' IDENTIFIER '.inputs' IDENTIFIER '.outputs' IDENTIFIER* latch
 
 IDENTIFIER : [a-zA-Z_]*[a-zA-Z0-9_]*[0-9]*;
 
-simInp : IDENTIFIER '=' IDENTIFIER;
+simInp : IDENTIFIER '=' IDENTIFIER; //mangler denne i AST
 
-latchAct: '.latch' IDENTIFIER ' -> ' IDENTIFIER'M'*;
+latchAct: '.latch' IDENTIFIER ' -> ' IDENTIFIER'M'* # Latches;
 
 updateCom : IDENTIFIER '=' expr* # Assignment;
 
-expr : IDENTIFIER               # Signal
+expr : IDENTIFIER               # StringVar
      | '('e1=expr')'            # Parentheses //not needed in abtract syntax
      |('!')e1=expr              # NOT
      |e1=expr ('&&') e2=expr    # AND
