@@ -47,29 +47,10 @@ public class main {
 //task 4 laves i main
 class Interpreter extends AbstractParseTreeVisitor<Expr> implements implVisitor<Expr> {
 
-	public Expr visitStart(implParser.StartContext ctx){return visit(ctx.e1);}
+	public AST visitStart(implParser.StartContext ctx){
+		return visit(ctx.cs);
+	};
 
-	@Override
-	public Expr visitCommand(implParser.CommandContext ctx) {
-		return null;
-	}
-
-	@Override
-	public Expr visitBlock(implParser.BlockContext ctx) {
-		return null;
-	}
-
-	@Override
-	public Expr visitCondition(implParser.ConditionContext ctx) {
-		return null;
-	}
-
-	@Override
-	public Expr visitExpr(implParser.ExprContext ctx) {
-		return null;
-	}
-
-	;
 
 /*
 	@Override

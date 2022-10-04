@@ -17,43 +17,97 @@ public interface implListener extends ParseTreeListener {
 	 */
 	void exitStart(implParser.StartContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link implParser#command}.
+	 * Enter a parse tree produced by {@link implParser#simInp}.
 	 * @param ctx the parse tree
 	 */
-	void enterCommand(implParser.CommandContext ctx);
+	void enterSimInp(implParser.SimInpContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link implParser#command}.
+	 * Exit a parse tree produced by {@link implParser#simInp}.
 	 * @param ctx the parse tree
 	 */
-	void exitCommand(implParser.CommandContext ctx);
+	void exitSimInp(implParser.SimInpContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link implParser#block}.
+	 * Enter a parse tree produced by the {@code Latches}
+	 * labeled alternative in {@link implParser#latchAct}.
 	 * @param ctx the parse tree
 	 */
-	void enterBlock(implParser.BlockContext ctx);
+	void enterLatches(implParser.LatchesContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link implParser#block}.
+	 * Exit a parse tree produced by the {@code Latches}
+	 * labeled alternative in {@link implParser#latchAct}.
 	 * @param ctx the parse tree
 	 */
-	void exitBlock(implParser.BlockContext ctx);
+	void exitLatches(implParser.LatchesContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link implParser#condition}.
+	 * Enter a parse tree produced by the {@code Assignment}
+	 * labeled alternative in {@link implParser#updateCom}.
 	 * @param ctx the parse tree
 	 */
-	void enterCondition(implParser.ConditionContext ctx);
+	void enterAssignment(implParser.AssignmentContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link implParser#condition}.
+	 * Exit a parse tree produced by the {@code Assignment}
+	 * labeled alternative in {@link implParser#updateCom}.
 	 * @param ctx the parse tree
 	 */
-	void exitCondition(implParser.ConditionContext ctx);
+	void exitAssignment(implParser.AssignmentContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link implParser#expr}.
+	 * Enter a parse tree produced by the {@code NOT}
+	 * labeled alternative in {@link implParser#expr}.
 	 * @param ctx the parse tree
 	 */
-	void enterExpr(implParser.ExprContext ctx);
+	void enterNOT(implParser.NOTContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link implParser#expr}.
+	 * Exit a parse tree produced by the {@code NOT}
+	 * labeled alternative in {@link implParser#expr}.
 	 * @param ctx the parse tree
 	 */
-	void exitExpr(implParser.ExprContext ctx);
+	void exitNOT(implParser.NOTContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code OR}
+	 * labeled alternative in {@link implParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void enterOR(implParser.ORContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code OR}
+	 * labeled alternative in {@link implParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void exitOR(implParser.ORContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code AND}
+	 * labeled alternative in {@link implParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void enterAND(implParser.ANDContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code AND}
+	 * labeled alternative in {@link implParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void exitAND(implParser.ANDContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code Parentheses}
+	 * labeled alternative in {@link implParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void enterParentheses(implParser.ParenthesesContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code Parentheses}
+	 * labeled alternative in {@link implParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void exitParentheses(implParser.ParenthesesContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code StringVar}
+	 * labeled alternative in {@link implParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void enterStringVar(implParser.StringVarContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code StringVar}
+	 * labeled alternative in {@link implParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void exitStringVar(implParser.StringVarContext ctx);
 }
