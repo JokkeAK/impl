@@ -16,21 +16,29 @@ public interface implVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitStart(implParser.StartContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link implParser#simInp}.
+	 * Visit a parse tree produced by the {@code Simulation}
+	 * labeled alternative in {@link implParser#simInp}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitSimInp(implParser.SimInpContext ctx);
+	T visitSimulation(implParser.SimulationContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code Latches}
+	 * Visit a parse tree produced by the {@code Outputs}
+	 * labeled alternative in {@link implParser#simOut}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitOutputs(implParser.OutputsContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code Latch}
 	 * labeled alternative in {@link implParser#latchAct}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitLatches(implParser.LatchesContext ctx);
+	T visitLatch(implParser.LatchContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code Assignment}
-	 * labeled alternative in {@link implParser#updateCom}.
+	 * labeled alternative in {@link implParser#command}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
@@ -42,6 +50,13 @@ public interface implVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitNOT(implParser.NOTContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code Identifier}
+	 * labeled alternative in {@link implParser#expr}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitIdentifier(implParser.IdentifierContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code OR}
 	 * labeled alternative in {@link implParser#expr}.
@@ -63,11 +78,4 @@ public interface implVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitParentheses(implParser.ParenthesesContext ctx);
-	/**
-	 * Visit a parse tree produced by the {@code StringVar}
-	 * labeled alternative in {@link implParser#expr}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitStringVar(implParser.StringVarContext ctx);
 }

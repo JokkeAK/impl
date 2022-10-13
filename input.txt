@@ -1,11 +1,27 @@
-// Just a simple calculation:
+.hardware traffiklys
 
-x=3;
-b=2;
-r=1;
+// Minimal traffiklys eksempel.
 
-while(x>0){
-  r=r*b;
-  x=x-1;
-}
+.inputs Button
+.outputs Red Green PRed PGreen
 
+.latch Red -> RedM
+
+.update
+
+Red = !RedM && Button
+Green  = !Red 
+PGreen = Red 
+PRed   = !PGreen
+
+.simulate Button=1100110111
+
+/* The simulator output should look something like this:
+
+1100110111 Button
+1000100101 Red
+0111011010 Green
+0111011010 PRed
+1000100101 PGreen
+
+*/

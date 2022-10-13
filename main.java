@@ -2,6 +2,8 @@ import org.antlr.v4.runtime.tree.ParseTreeVisitor;
 import org.antlr.v4.runtime.*;
 import org.antlr.v4.runtime.tree.*;
 import org.antlr.v4.runtime.CharStreams;
+
+import java.awt.*;
 import java.io.IOException;
 import java.util.List;
 
@@ -47,79 +49,38 @@ public class main {
 
 class Interpreter extends AbstractParseTreeVisitor<AST> implements implVisitor<AST> {
 	@Override
-	public AST visitStart(implParser.StartContext ctx) {
-		return null;
+	public Circuit visitStart(implParser.StartContext ctx) {
+		return new Circuit();
 	}
 
 	@Override
-	public AST visitSimInp(implParser.SimInpContext ctx) {
-		return null;
+	public  AST visitSimulation(implParser.SimulationContext ctx) {
+		return new Simulation(ctx.x.getText(), ctx.b.getText());
 	}
 
 	@Override
-	public AST visitLatches(implParser.LatchesContext ctx) {
-		return null;
+	public AST visitOutputs(implParser.OutputsContext ctx) {
+		return new Outputs(ctx.x.getText());
 	}
 
 	@Override
-	public AST visitAssignment(implParser.AssignmentContext ctx) {
-		return null;
-	}
-
-	@Override
-	public AST visitNOT(implParser.NOTContext ctx) {
-		return null;
-	}
-
-	@Override
-	public AST visitOR(implParser.ORContext ctx) {
-		return null;
-	}
-
-	@Override
-	public AST visitAND(implParser.ANDContext ctx) {
-		return null;
-	}
-
-	@Override
-	public AST visitParentheses(implParser.ParenthesesContext ctx) {
-		return null;
-	}
-
-	@Override
-	public AST visitStringVar(implParser.StringVarContext ctx) {
-		return null;
-	}
-
-/*
-	@Override
-	public AST visitStart(implParser.StartContext ctx) {
-		return visit(ctx);
-	}
-
-	@Override
-	public AST visitSimInp(implParser.SimInpContext ctx) {
-		return null;
-	}
-
-	@Override
-	public AST visitLatches(implParser.LatchesContext ctx) {
-		return null;
+	public AST visitLatch(implParser.LatchContext ctx) {
+		return new Latch(ctx.getText());
 	}
 
 	@Override
 	public AST visitAssignment(implParser.AssignmentContext ctx) {
-		return new Assignment();
-	}
-
-	@Override
-	public AST visitSequence(implParser.SequenceContext ctx) {
-		return new Sequence((Command)visit(ctx.c),visit(ctx.cs));
+		return new Assignment(ctx.x.getText(),(Expr) visit(ctx.e));
 	}
 
 	@Override
 	public AST visitNOT(implParser.NOTContext ctx) {
 		return new NOT((Expr)visit(ctx.e1));
+	}
+
+	@Override
+	public AST visitIdentifier(implParser.IdentifierContext ctx) {
+		return new Identifier(ctx.x.getText());
 	}
 
 	@Override
@@ -137,11 +98,5 @@ class Interpreter extends AbstractParseTreeVisitor<AST> implements implVisitor<A
 		return visit(ctx.e1);
 	}
 
-	@Override
-	public AST visitStringVar(implParser.StringVarContext ctx) {
-		return null;
-	}
-
- */
 }
 
