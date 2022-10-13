@@ -23,7 +23,7 @@ public class main {
 	// open the input file
 	CharStream input = CharStreams.fromFileName(filename);
 	    //new ANTLRFileStream (filename); // depricated
-	
+
 	// create a lexer/scanner
 	implLexer lex = new implLexer(input);
 	
@@ -39,7 +39,15 @@ public class main {
 	// Construct an interpreter and run it on the parse tree
 	Interpreter interpreter = new Interpreter();
 	AST result = interpreter.visit(parseTree);
-    }
+
+		Circuit circuit = interpreter.visitStart(((implParser.StartContext) parseTree));
+		List<Latch> latches = null;
+
+		latches.add(0, (Latch) interpreter.visitLatch((implParser.LatchContext) parseTree));
+		circuit.runSimulation();
+
+
+	}
 }
 
 // We write an interpreter that implements interface
